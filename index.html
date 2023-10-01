@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <title>{{seo.title}}</title>
+    
+    <!-- Meta tags for SEO and social sharing -->
+    <link rel="canonical" href="{{seo.url}}">
+    <meta name="description" content="{{seo.description}}">
+    <meta property="og:title" content="{{seo.title}}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{seo.url}}">
+    <meta property="og:description" content="{{seo.description}}">
+    <meta property="og:image" content="{{seo.image}}">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+    <link rel="stylesheet" href="style.css"/> 
+    
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@gradio/client@0.3.0/dist/index.min.js"></script>
+    <script src="gradio.js" type="module"></script>
+  </head>
+  <body id="result-body">
+    <div class="result-wrapper">
+      <div id="result">
+
+        <div class="card">
+          
+          <img id = "imageAI" src="Panda/panda.png" alt="ai" />
+          
+          <p id="storyAI">
+            In a magical place where oceans floated in the sky, Momo the panda had the time of his
+life. Riding on a lily pad, he slid on sparkling waves, laughing as he went through waterfalls.
+Dolphins jumped around him, leaving trails of sparkly light, and Momo tried to jump like
+them. When night came, he rested among glowing jellyfish that lit up the sky. Momo's day
+was filled with wonder and joy in this upside-down ocean world.
+        </p>
+        </div>
+        <div>
+            <button class="button-54" onclick="startText()" type="button" value="Play">Listen Story</button>
+            <button class="button-54" onclick="pauseVoice()">Pause</button>
+            <button class="button-54" onclick="resumeVoice()">Resume</button>
+                
+        </div>
+        <a href="">
+          <button class="button-54" role="button">draw again</button>
+        </a>
+        <a href="">
+            <button class="button-54" role="button">Check Album</button>
+        </a>
+        
+      </div>
+    </div>
+
+    <script>
+
+
+        let isSpeaking = false; // A flag to check if the story is currently being spoken
+
+        function startText() {
+            if (isSpeaking) {
+                responsiveVoice.cancel(); // If speaking, stop the current speech first
+            }
+            responsiveVoice.speak('In a magical place where oceans floated in the sky, Momo the panda had the time of his life. Riding on a lily pad, he slid on sparkling waves, laughing as he went through waterfalls Dolphins jumped around him, leaving trails of sparkly light, and Momo tried to jump like them. When night came, he rested among glowing jellyfish that lit up the sky. His day was filled with wonder and joy in this upside-down ocean world.');
+            isSpeaking = true; // Update the flag
+        }
+        
+        function pauseVoice() {
+            if (isSpeaking) {
+                responsiveVoice.pause(); // Only pause if the story is being spoken
+            }
+        }
+        
+        function resumeVoice() {
+            if (isSpeaking) {
+                responsiveVoice.resume(); // Only resume if the story was previously being spoken and paused
+            }
+        }
+        
+    </script>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=cPXSnfAq"></script>
+  </body>
+</html>
